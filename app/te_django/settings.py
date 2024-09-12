@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'phone_field',
     'customers',
     'producers',
+    'scheduler',
     'weightStation',
     'users',
 ]
