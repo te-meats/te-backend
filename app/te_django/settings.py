@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     'corsheaders',
     'phone_field',
     'customers',
+    'producers',
+    'weightStation',
     'users',
 ]
 
