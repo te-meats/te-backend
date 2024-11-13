@@ -10,6 +10,10 @@ services:
       - ./.env.dev
     depends_on:
       - db
+    links:
+      - db:db
+    networks:
+      - django_network
   db:
     image: postgres:16.4-alpine3.20
     volumes:
@@ -19,6 +23,11 @@ services:
       - PGUSER=admin
       - POSTGRES_PASSWORD=admin
       - POSTGRES_DB=postgresql
+    networks:
+      - django_network
+networks:
+  django_network:
+    driver: bridge
 
 volumes:
   postgres_data:

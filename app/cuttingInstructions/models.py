@@ -1,39 +1,19 @@
 from django.db import models
 
+
+class CuttingInstruction(models.Model):
+    name = models.CharField()
+    created = models.DateTimeField(auto_now_add=True)
+
 # Create your models here.
-class PrepTypeList(models.Model):
+class Primal(models.Model):
     name = models.CharField()
-
-class SecondaryPrepTypeList(models.Model):
-    name = models.CharField()
-
-class PrimalList(models.Model):
-    name = models.CharField()
-
-class CutList(models.Model):
-    name = models.CharField()
-
-class PrepType(models.Model):
-    name = models.CharField()
-
-class SecondaryPrepType(models.Model):
-    name = models.CharField()
-
-class CutType(models.Model):
-    name = models.CharField()
+    cutting_instruction = models.ForeignKey(CuttingInstruction, related_name='primals', on_delete=models.CASCADE, null=True)
 
 class Cut(models.Model):
     name = models.CharField()
     cutType = models.CharField()
     prepType = models.CharField()
-    secondaryPrepType = models.CharField()
-    unit = models.CharField()
+    quantity = models.CharField()
+    primal = models.ForeignKey(Primal, related_name='cuts', on_delete=models.CASCADE, null=True)
 
-class Primal(models.Model):
-    name = models.CharField()
-    cuts = models.ManyToManyField(Cut)
-
-class CuttingInstructions(models.Model):
-    name = models.CharField()
-    bodyParts = models.ManyToManyField(Primal)   
-    created = models.DateTimeField(auto_now_add=True)
