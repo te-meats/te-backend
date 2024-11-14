@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'customers',
     'producers',
     'scheduler',
+    'cuttingInstructions',
     'weightStation',
     'users',
 ]
